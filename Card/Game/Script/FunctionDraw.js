@@ -1,5 +1,5 @@
 function drawSceneInit() {
-    context.font = '32px Opensans'
+    context.font = '32px neodgm'
     context.textAlign = 'left'
     context.textBaseline = 'top'
     context.fillStyle = 'Black'
