@@ -9,3 +9,34 @@ let delta
 let scene = 'Title'
 let state = ''
 let menu = false
+
+let varInput = {
+    left : false,
+    right : false,
+    up : false,
+    down : false
+}
+
+let varSession = {
+    
+}
+
+let varField = {
+    tile : [],
+    wall : [],
+    positionPlayer : [],
+    emeny : [],
+    thing : [],
+}
+
+let varPlayer = {
+
+}
+
+let varAdventure = {
+    
+}
+
+let varGame = {
+
+}

@@ -20,6 +20,8 @@ function mouseUpTitle(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.title.buttonStart)) {
                     scene = 'Field'
                     state = ''
+                } else if (pointInsideRectArray(x, y, UI.title.buttonErase)) {
+                    eraseData()
                 }
             }
         }
