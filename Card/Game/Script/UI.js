@@ -8,10 +8,20 @@ let UI = {
     },
 
     field : {
-
+        buttonMenu : [1220, 20, 40, 40],
+        buttonInfo : [1220, 660, 40, 40]
     },
 
     game : {
 
+    },
+
+    menu : {
+        rect : [320, 240, 640, 240],
+        textPause : [328, 264],
+        buttonResume : [320, 320, 640, 80],
+        textResume : [328, 344],
+        buttonExit : [320, 400, 640, 80],
+        textExit : [328, 424]
     }
 }
