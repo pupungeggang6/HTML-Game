@@ -26,5 +26,10 @@ function drawField() {
 }
 
 function drawInfo() {
+    context.fillStyle = 'White'
+    context.fillRect(UI.info.rect[0], UI.info.rect[1], UI.info.rect[2], UI.info.rect[3])
+    context.strokeRect(UI.info.rect[0], UI.info.rect[1], UI.info.rect[2], UI.info.rect[3])
+    context.fillStyle = 'Black'
     
+    context.strokeRect(UI.info.buttonClose[0], UI.info.buttonClose[1], UI.info.buttonClose[2], UI.info.buttonClose[3])
 }

@@ -12,6 +12,11 @@ let UI = {
         buttonInfo : [1220, 660, 40, 40]
     },
 
+    info : { 
+        rect : [80, 80, 1120, 560],
+        buttonClose : [1160, 80, 40, 40],
+    },
+
     game : {
 
     },

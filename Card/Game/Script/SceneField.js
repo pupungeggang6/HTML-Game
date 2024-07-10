@@ -41,6 +41,10 @@ function mouseUpField(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.field.buttonInfo)) {
                     state = 'Info'
                 }
+            } else if (state === 'Info') {
+                if (pointInsideRectArray(x, y, UI.info.buttonClose)) {
+                    state = ''
+                }
             }
         }
     }
@@ -61,6 +65,14 @@ function keyDownField(key) {
 
     if (key === 'd') {
         varInput.right = true
+    }
+
+    if (menu === false) {
+        if (state === '') {
+            if (key === 'i') {
+                state = 'Info'
+            }
+        }
     }
 }
 
