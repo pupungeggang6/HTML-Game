@@ -1,5 +1,9 @@
 function loopField() {
     displayField()
+
+    if (state === '') {
+        movePlayer()
+    }
 }
 
 function displayField() {
@@ -7,6 +11,12 @@ function displayField() {
 
     context.strokeRect(UI.field.buttonMenu[0], UI.field.buttonMenu[1], UI.field.buttonMenu[2], UI.field.buttonMenu[3])
     context.strokeRect(UI.field.buttonInfo[0], UI.field.buttonInfo[1], UI.field.buttonInfo[2], UI.field.buttonInfo[3])
+
+    drawField()
+
+    if (state === 'Info') {
+        drawInfo()
+    }
 
     if (menu === true) {
         drawMenu()
@@ -37,9 +47,37 @@ function mouseUpField(x, y, button) {
 }
 
 function keyDownField(key) {
+    if (key === 'w') {
+        varInput.up = true
+    }
 
+    if (key === 'a') {
+        varInput.left = true
+    }
+
+    if (key === 's') {
+        varInput.down = true
+    }
+
+    if (key === 'd') {
+        varInput.right = true
+    }
 }
 
 function keyUpField(key) {
+    if (key === 'w') {
+        varInput.up = false
+    }
 
+    if (key === 'a') {
+        varInput.left = false
+    }
+
+    if (key === 's') {
+        varInput.down = false
+    }
+
+    if (key === 'd') {
+        varInput.right = false
+    }
 }

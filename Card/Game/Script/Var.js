@@ -24,7 +24,7 @@ let varSession = {
 let varField = {
     tile : [],
     wall : [],
-    positionPlayer : [],
+    positionPlayer : [0, 0],
     emeny : [],
     thing : [],
 }

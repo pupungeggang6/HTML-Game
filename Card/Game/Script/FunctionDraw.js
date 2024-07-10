@@ -21,6 +21,10 @@ function drawMenu() {
     context.fillText('Exit', UI.menu.textExit[0], UI.menu.textExit[1])
 }
 
+function drawField() {
+    context.strokeRect(Math.floor(varField.positionPlayer[0]), Math.floor(varField.positionPlayer[1]), 40, 40)
+}
+
 function drawInfo() {
     
 }
