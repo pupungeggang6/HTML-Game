@@ -22,6 +22,10 @@ function drawMenu() {
 }
 
 function drawField() {
+    for (let i = 0; i < varField.connection.length; i++) {
+        context.strokeRect(Math.floor(varField.connection[i][0][0] - varField.camera[0]), Math.floor(varField.connection[i][0][1] - varField.camera[1]), varField.connection[i][0][2], varField.connection[i][0][3])
+    }
+
     context.strokeRect(Math.floor(varField.positionPlayer[0] - varField.camera[0] - 20), Math.floor(varField.positionPlayer[1] - varField.camera[1] - 20), 40, 40)
 }
 

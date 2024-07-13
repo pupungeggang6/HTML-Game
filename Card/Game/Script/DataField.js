@@ -1,6 +1,6 @@
 const dataField = {
     'HomeTown' : {
-        'Connection' : [],
+        'Connection' : [[[0, 0, 80, 80], 'Field1', [200, 200]]],
         'Wall' : [],
         'Thing' : [],
         'Village' : true,
