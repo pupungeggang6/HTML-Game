@@ -22,7 +22,7 @@ function drawMenu() {
 }
 
 function drawField() {
-    context.strokeRect(Math.floor(varField.positionPlayer[0]), Math.floor(varField.positionPlayer[1]), 40, 40)
+    context.strokeRect(Math.floor(varField.positionPlayer[0] - varField.camera[0] - 20), Math.floor(varField.positionPlayer[1] - varField.camera[1] - 20), 40, 40)
 }
 
 function drawInfo() {

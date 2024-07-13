@@ -22,11 +22,16 @@ let varSession = {
 }
 
 let varField = {
-    tile : [],
-    wall : [],
-    positionPlayer : [0, 0],
+    place : 'HomeTown',
+    village : true,
     emeny : [],
+
+    wall : [],
     thing : [],
+    connection : [],
+
+    positionPlayer : [0, 0],
+    camera : [0, 0]
 }
 
 let varPlayer = {

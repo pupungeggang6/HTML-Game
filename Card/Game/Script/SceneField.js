@@ -1,9 +1,12 @@
 function loopField() {
-    displayField()
-
-    if (state === '') {
-        movePlayer()
+    if (menu === false) {
+        if (state === '') {
+            movePlayer()
+            moveCamera()
+        }
     }
+
+    displayField()
 }
 
 function displayField() {
