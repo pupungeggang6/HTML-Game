@@ -17,6 +17,15 @@ let UI = {
         buttonClose : [1160, 80, 40, 40],
     },
 
+    confirmAdventure : {
+        rect : [320, 160, 640, 400],
+        textTitle : [328, 184],
+        buttonYes : [400, 400, 160, 80],
+        textYes : [408, 424],
+        buttonNo : [720, 400, 160, 80],
+        textNo : [728, 424],
+    },
+
     game : {
 
     },

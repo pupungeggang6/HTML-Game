@@ -37,3 +37,21 @@ function drawInfo() {
     
     context.strokeRect(UI.info.buttonClose[0], UI.info.buttonClose[1], UI.info.buttonClose[2], UI.info.buttonClose[3])
 }
+
+function drawConfirmAdventure() {
+    context.fillStyle = 'White'
+    context.fillRect(UI.confirmAdventure.rect[0], UI.confirmAdventure.rect[1], UI.confirmAdventure.rect[2], UI.confirmAdventure.rect[3])
+    context.strokeRect(UI.confirmAdventure.rect[0], UI.confirmAdventure.rect[1], UI.confirmAdventure.rect[2], UI.confirmAdventure.rect[3])
+    context.fillStyle = 'Black'
+
+    if (state === 'ConfirmAdventureStart') {
+        context.fillText('Start adventure?', UI.confirmAdventure.textTitle[0], UI.confirmAdventure.textTitle[1])
+    } else {
+        context.fillText('End adventure?', UI.confirmAdventure.textTitle[0], UI.confirmAdventure.textTitle[1])
+    }
+
+    context.strokeRect(UI.confirmAdventure.buttonYes[0], UI.confirmAdventure.buttonYes[1], UI.confirmAdventure.buttonYes[2], UI.confirmAdventure.buttonYes[3])
+    context.fillText('Yes', UI.confirmAdventure.textYes[0], UI.confirmAdventure.textYes[1])
+    context.strokeRect(UI.confirmAdventure.buttonNo[0], UI.confirmAdventure.buttonNo[1], UI.confirmAdventure.buttonNo[2], UI.confirmAdventure.buttonNo[3])
+    context.fillText('No', UI.confirmAdventure.textNo[0], UI.confirmAdventure.textNo[1])
+}

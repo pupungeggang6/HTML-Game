@@ -31,7 +31,9 @@ let varField = {
     connection : [],
 
     positionPlayer : [0, 0],
-    camera : [0, 0]
+    camera : [0, 0],
+    destinationPlace : '',
+    destinationPosition : [0, 0]
 }
 
 let varPlayer = {
@@ -39,7 +41,7 @@ let varPlayer = {
 }
 
 let varAdventure = {
-    
+    adventure : false,
 }
 
 let varGame = {

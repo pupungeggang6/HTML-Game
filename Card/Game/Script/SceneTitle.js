@@ -24,7 +24,7 @@ function mouseUpTitle(x, y, button) {
                     varField.wall = dataField[varField.place]['Wall']
                     varField.thing = dataField[varField.place]['Thing']
                     varField.connection = dataField[varField.place]['Connection']
-                    varField.wall = dataField[varField.place]['Wall']
+                    varField.village = dataField[varField.place]['Village']
                     varField.positionPlayer = dataField[varField.place]['Spawn']
                 } else if (pointInsideRectArray(x, y, UI.title.buttonErase)) {
                     eraseData()

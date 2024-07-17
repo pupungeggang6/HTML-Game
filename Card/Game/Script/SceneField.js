@@ -17,6 +17,10 @@ function displayField() {
 
     drawField()
 
+    if (state === 'ConfirmAdventureStart' || state === 'ConfirmAdventureEnd') {
+        drawConfirmAdventure()
+    }
+
     if (state === 'Info') {
         drawInfo()
     }
@@ -48,6 +52,22 @@ function mouseUpField(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.info.buttonClose)) {
                     state = ''
                 }
+            } else if (state === 'ConfirmAdventureStart') {
+                if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonYes)) {
+                    varAdventure.adventure = true
+                    moveField()
+                    state = ''
+                } else if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonNo)) {
+                    state = ''
+                }
+            } else if (state === 'ConfirmAdventureEnd') {
+                if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonYes)) {
+                    varAdventure.adventure = false
+                    moveField()
+                    state = ''
+                } else if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonNo)) {
+                    state = ''
+                }
             }
         }
     }
@@ -74,6 +94,12 @@ function keyDownField(key) {
         if (state === '') {
             if (key === 'i') {
                 state = 'Info'
+            } else if (key === 'e') {
+                moveFieldKeyPress()
+            }
+        } else if (state === 'Info') {
+            if (key === 'i') {
+                state = ''
             }
         }
     }
