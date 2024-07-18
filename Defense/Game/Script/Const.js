@@ -1,0 +1,9 @@
+const emptySave = {
+    level : [
+
+    ],
+
+    card : [
+        
+    ]
+}
