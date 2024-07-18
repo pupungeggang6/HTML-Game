@@ -2,8 +2,22 @@
 <html>
     <head>
         <title>Defense</title>
+        <style>
+            #Screen {
+                border : 2px solid black;
+                position : absolute;
+                left : 0px;
+                top : 0px;
+            }
+
+            @font-face {
+                font-family : 'neodgm';
+                src : url('Font/neodgm.ttf');
+            }
+        </style>
     </head>
     <body>
+        <canvas id="Screen" width="1280" heigth="720"></canvas>
         <script src="Script/Asset.js"></script>
         <script src="Script/Data.js"></script>
         <script src="Script/UI.js"></script>
