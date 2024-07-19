@@ -7,8 +7,12 @@ const UI = {
         textErase : [168, 264],
     },
 
-    levelSelect : {
-
+    level : {
+        textTitle : [8, 8],
+        buttonBack : [1220, 20, 40, 40],
+        buttonLevelStart : [80, 80],
+        buttonLevelSize : [80, 80],
+        buttonLevelInterval : [120, 120],
     },
 
     collection : {
