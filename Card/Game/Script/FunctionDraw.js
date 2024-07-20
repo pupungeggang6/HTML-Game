@@ -60,7 +60,7 @@ function drawAdventureStart() {
     context.fillStyle = 'White'
     context.fillRect(UI.adventureStart.rect[0], UI.adventureStart.rect[1], UI.adventureStart.rect[2], UI.adventureStart.rect[3])
     context.strokeRect(UI.adventureStart.rect[0], UI.adventureStart.rect[1], UI.adventureStart.rect[2], UI.adventureStart.rect[3])
-    context.strokeStyle = 'Black'
+    context.fillStyle = 'Black'
 
     context.fillText('Select start equipment', UI.adventureStart.textTitle[0], UI.adventureStart.textTitle[1])
     
