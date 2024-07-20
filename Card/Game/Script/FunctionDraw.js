@@ -55,3 +55,25 @@ function drawConfirmAdventure() {
     context.strokeRect(UI.confirmAdventure.buttonNo[0], UI.confirmAdventure.buttonNo[1], UI.confirmAdventure.buttonNo[2], UI.confirmAdventure.buttonNo[3])
     context.fillText('No', UI.confirmAdventure.textNo[0], UI.confirmAdventure.textNo[1])
 }
+
+function drawAdventureStart() {
+    context.fillStyle = 'White'
+    context.fillRect(UI.adventureStart.rect[0], UI.adventureStart.rect[1], UI.adventureStart.rect[2], UI.adventureStart.rect[3])
+    context.strokeRect(UI.adventureStart.rect[0], UI.adventureStart.rect[1], UI.adventureStart.rect[2], UI.adventureStart.rect[3])
+    context.strokeStyle = 'Black'
+
+    context.fillText('Select start equipment', UI.adventureStart.textTitle[0], UI.adventureStart.textTitle[1])
+    
+    for (let i = 0; i < 3; i++) {
+        context.strokeRect(UI.adventureStart.buttonSelectList[i][0], UI.adventureStart.buttonSelectList[i][1], UI.adventureStart.buttonSelectList[i][2], UI.adventureStart.buttonSelectList[i][3])
+    }
+
+    if (varSelected.start != -1) {
+        context.strokeStyle = 'Lime'
+        context.strokeRect(UI.adventureStart.buttonSelectList[varSelected.start][0], UI.adventureStart.buttonSelectList[varSelected.start][1], UI.adventureStart.buttonSelectList[varSelected.start][2], UI.adventureStart.buttonSelectList[varSelected.start][3])
+        context.strokeStyle = 'Black'
+    }
+
+    context.strokeRect(UI.adventureStart.buttonStart[0], UI.adventureStart.buttonStart[1], UI.adventureStart.buttonStart[2], UI.adventureStart.buttonStart[3])
+    context.fillText('Start', UI.adventureStart.textStart[0], UI.adventureStart.textStart[1])
+}

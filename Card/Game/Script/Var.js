@@ -21,6 +21,10 @@ let varSession = {
     
 }
 
+let varSelected = {
+    start : -1,
+}
+
 let varField = {
     place : 'HomeTown',
     village : true,
@@ -37,7 +41,15 @@ let varField = {
 }
 
 let varPlayer = {
+    collection : {
+        card : [],
+        equipment : [],
+        item : [],
+    },
 
+    deck : [
+        [1, 1, 2, 2, 3, 3]
+    ],
 }
 
 let varAdventure = {

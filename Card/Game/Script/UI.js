@@ -9,7 +9,8 @@ const UI = {
 
     field : {
         buttonMenu : [1220, 20, 40, 40],
-        buttonInfo : [1220, 660, 40, 40]
+        buttonInfo : [1220, 660, 40, 40],
+        textPlace : [8, 684],
     },
 
     info : { 
@@ -26,8 +27,17 @@ const UI = {
         textNo : [728, 424],
     },
 
-    game : {
+    adventureStart : {
+        rect : [160, 80, 960, 560],
+        textTitle : [168, 88],
+        buttonSelectList : [
+            [240, 160, 160, 240], [560, 160, 160, 240], [880, 160, 160, 240]
+        ],
+        buttonStart : [560, 480, 160, 80],
+        textStart : [568, 504],
+    },
 
+    game : {
     },
 
     menu : {

@@ -48,3 +48,7 @@ function moveField() {
     varField.connection = dataField[varField.place]['Connection']
     varField.village = dataField[varField.place]['Village']
 }
+
+function adventureStart() {
+    
+}

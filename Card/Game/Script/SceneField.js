@@ -14,11 +14,16 @@ function displayField() {
 
     context.strokeRect(UI.field.buttonMenu[0], UI.field.buttonMenu[1], UI.field.buttonMenu[2], UI.field.buttonMenu[3])
     context.strokeRect(UI.field.buttonInfo[0], UI.field.buttonInfo[1], UI.field.buttonInfo[2], UI.field.buttonInfo[3])
+    context.fillText(`${varField.place}`, UI.field.textPlace[0], UI.field.textPlace[1])
 
     drawField()
 
     if (state === 'ConfirmAdventureStart' || state === 'ConfirmAdventureEnd') {
         drawConfirmAdventure()
+    }
+
+    if (state === 'AdventureStart') {
+        drawAdventureStart()
     }
 
     if (state === 'Info') {
@@ -56,7 +61,9 @@ function mouseUpField(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonYes)) {
                     varAdventure.adventure = true
                     moveField()
-                    state = ''
+                    state = 'AdventureStart'
+                    adventureStart()
+                    varSelected.start = -1
                 } else if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonNo)) {
                     state = ''
                 }
@@ -67,6 +74,18 @@ function mouseUpField(x, y, button) {
                     state = ''
                 } else if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonNo)) {
                     state = ''
+                }
+            } else if (state === 'AdventureStart') {
+                for (let i = 0; i < 3; i++) {
+                    if (pointInsideRectArray(x, y, UI.adventureStart.buttonSelectList[i])) {
+                        varSelected.start = i
+                    }
+                }
+
+                if (pointInsideRectArray(x, y, UI.adventureStart.buttonStart)) {
+                    if (varSelected.start != -1) {
+                        state = ''
+                    }
                 }
             }
         }
