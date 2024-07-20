@@ -31,6 +31,8 @@ function loop() {
     }
 
     gameFramePrevious = Date.now()
+    
+    gameInstance = requestAnimationFrame(loop)
 }
 
 function mouseUp(event) {
