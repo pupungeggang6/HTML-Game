@@ -15,7 +15,7 @@ const dataField = {
         'Wall' : [],
         'Thing' : [],
         'EnemyList' : [1, 2],
-        'EnemySpawn' : [[3, 4], [12, 10], [8, 9], [10, 2], [21, 6], [23, 8]],
+        'EnemySpawn' : [[3, 4], [12, 10], [8, 9], [10, 2], [21, 6], [23, 8], [27, 14]],
         'Village' : false,
         'Size' : [1280, 720],
         'Spawn' : [0, 0]

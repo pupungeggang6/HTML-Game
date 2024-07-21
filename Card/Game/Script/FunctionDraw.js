@@ -27,7 +27,7 @@ function drawField() {
     }
 
     for (let i = 0; i < varField.enemy.length; i++) {
-        context.strokeRect(Math.floor(varField.enemy[i]['Position'][0] - varField.camera[0]), Math.floor(varField.enemy[i]['Position'][1] - varField.camera[1]), 40, 40)
+        context.strokeRect(Math.floor(varField.enemy[i]['Position'][0] - varField.camera[0]), Math.floor(varField.enemy[i]['Position'][1] - varField.camera[1]), 80, 80)
     }
 
     context.strokeRect(Math.floor(varField.positionPlayer[0] - varField.camera[0] - 20), Math.floor(varField.positionPlayer[1] - varField.camera[1] - 20), 40, 40)
@@ -83,5 +83,26 @@ function drawAdventureStart() {
 }
 
 function drawGameStart() {
-    
+    context.fillStyle = 'White'
+    context.fillRect(UI.game.start.rect[0], UI.game.start.rect[1], UI.game.start.rect[2], UI.game.start.rect[3])
+    context.strokeRect(UI.game.start.rect[0], UI.game.start.rect[1], UI.game.start.rect[2], UI.game.start.rect[3])
+    context.fillStyle = 'Black'
+
+    if (state === 'GameStart') {
+        context.fillText('Select Cards to Change.', UI.game.start.textTitle[0], UI.game.start.textTitle[1])
+    } else if (state === 'GameStartConfirm') {
+        context.fillText('Press start button', UI.game.start.textTitle[0], UI.game.start.textTitle[1])
+    }
+
+    for (let i = 0; i < 3; i++) {
+        context.strokeRect(UI.game.start.buttonSelectList[i][0], UI.game.start.buttonSelectList[i][1], UI.game.start.buttonSelectList[i][2], UI.game.start.buttonSelectList[i][3])
+    }
+
+    context.strokeRect(UI.game.start.buttonStart[0], UI.game.start.buttonStart[1], UI.game.start.buttonStart[2], UI.game.start.buttonStart[3])
+
+    if (state === 'GameStart') {
+        context.fillText('Change', UI.game.start.textStart[0], UI.game.start.textStart[1])
+    } else if (state === 'GameStartConfirm') {
+        context.fillText('Start', UI.game.start.textStart[0], UI.game.start.textStart[1])
+    }
 }

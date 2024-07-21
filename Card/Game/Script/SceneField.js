@@ -12,6 +12,7 @@ function loopField() {
 function displayField() {
     drawSceneInit()
 
+    context.fillText('[W, A, S, D] Move, [E] Interact', UI.field.textTitle[0], UI.field.textTitle[1])
     context.strokeRect(UI.field.buttonMenu[0], UI.field.buttonMenu[1], UI.field.buttonMenu[2], UI.field.buttonMenu[3])
     context.strokeRect(UI.field.buttonInfo[0], UI.field.buttonInfo[1], UI.field.buttonInfo[2], UI.field.buttonInfo[3])
     context.fillText(`${varField.place}`, UI.field.textPlace[0], UI.field.textPlace[1])

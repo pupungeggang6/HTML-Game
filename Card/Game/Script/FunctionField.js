@@ -40,7 +40,7 @@ function interactKeyPress() {
     }
 
     for (let i = 0; i < varField.enemy.length; i++) {
-        if (pointInsideRect(varField.positionPlayer[0], varField.positionPlayer[1], varField.enemy[i]['Position'][0], varField.enemy[i]['Position'][1], 40, 40)) {
+        if (pointInsideRect(varField.positionPlayer[0], varField.positionPlayer[1], varField.enemy[i]['Position'][0], varField.enemy[i]['Position'][1], 80, 80)) {
             scene = 'Game'
             state = 'GameStart'
         }
@@ -49,6 +49,7 @@ function interactKeyPress() {
 
 function moveField() {
     varField.place = varField.destinationPlace
+    varField.positionPlayer = varField.destinationPosition
     varField.wall = JSON.parse(JSON.stringify(dataField[varField.place]['Wall']))
     varField.thing = JSON.parse(JSON.stringify(dataField[varField.place]['Thing']))
     varField.connection = JSON.parse(JSON.stringify(dataField[varField.place]['Connection']))
@@ -62,12 +63,12 @@ function moveField() {
         let tempEnemySpawn = JSON.parse(JSON.stringify(varField.enemySpawn))
         let tempEnemySpawnSelected = []
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 5; i++) {
             let index = Math.floor(Math.random() * tempEnemySpawn.length)
             tempEnemySpawnSelected.push(tempEnemySpawn.splice(index, 1)[0])
         }
 
-        for (let i = 0; i < 3; i++) {
+        for (let i = 0; i < 5; i++) {
             let enemyID = varField.enemyList[Math.floor(Math.random() * varField.enemyList.length)]
             let enemyPosition = [tempEnemySpawnSelected[i][0] * 40, tempEnemySpawnSelected[i][1] * 40]
             let tempEnemy = {'Position' : [enemyPosition[0], enemyPosition[1]], 'ID' : enemyID}
