@@ -19,6 +19,7 @@ const UI = {
     },
 
     game : {
+        buttonMenu : [1220, 20, 40, 40],
         start : {
             rect : [160, 80, 960, 560],
             titleText : [168, 88],
@@ -28,5 +29,14 @@ const UI = {
             buttonStart : [560, 480, 160, 80],
             textStart : [568, 504],
         },
+    },
+
+    menu : {
+        rect : [320, 240, 640, 240],
+        textPaused : [328, 264],
+        buttonResume : [320, 320, 640, 80],
+        textResume : [328, 344],
+        buttonExit : [320, 400, 640, 80],
+        textExit : [328, 424]
     }
 }

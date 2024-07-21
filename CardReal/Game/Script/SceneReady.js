@@ -44,6 +44,10 @@ function mouseUpReady(x, y, button) {
                         state = 'Start'
                         varSelected.character = -1
                         varSelected.start = -1
+                        varField.positionPlayer = [0, 0]
+                        varField.camera = [0, 0]
+                        movePlayer()
+                        moveCamera()
                     }
                 }
             }
