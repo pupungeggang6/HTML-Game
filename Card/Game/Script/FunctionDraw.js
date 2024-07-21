@@ -26,6 +26,10 @@ function drawField() {
         context.strokeRect(Math.floor(varField.connection[i][0][0] - varField.camera[0]), Math.floor(varField.connection[i][0][1] - varField.camera[1]), varField.connection[i][0][2], varField.connection[i][0][3])
     }
 
+    for (let i = 0; i < varField.enemy.length; i++) {
+        context.strokeRect(Math.floor(varField.enemy[i]['Position'][0] - varField.camera[0]), Math.floor(varField.enemy[i]['Position'][1] - varField.camera[1]), 40, 40)
+    }
+
     context.strokeRect(Math.floor(varField.positionPlayer[0] - varField.camera[0] - 20), Math.floor(varField.positionPlayer[1] - varField.camera[1] - 20), 40, 40)
 }
 
@@ -76,4 +80,8 @@ function drawAdventureStart() {
 
     context.strokeRect(UI.adventureStart.buttonStart[0], UI.adventureStart.buttonStart[1], UI.adventureStart.buttonStart[2], UI.adventureStart.buttonStart[3])
     context.fillText('Start', UI.adventureStart.textStart[0], UI.adventureStart.textStart[1])
+}
+
+function drawGameStart() {
+    
 }

@@ -61,9 +61,9 @@ function mouseUpField(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonYes)) {
                     varAdventure.adventure = true
                     moveField()
-                    state = 'AdventureStart'
                     adventureStart()
                     varSelected.start = -1
+                    state = 'AdventureStart'
                 } else if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonNo)) {
                     state = ''
                 }
@@ -114,7 +114,7 @@ function keyDownField(key) {
             if (key === 'i') {
                 state = 'Info'
             } else if (key === 'e') {
-                moveFieldKeyPress()
+                interactKeyPress()
             }
         } else if (state === 'Info') {
             if (key === 'i') {

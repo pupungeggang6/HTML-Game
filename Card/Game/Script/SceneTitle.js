@@ -21,11 +21,13 @@ function mouseUpTitle(x, y, button) {
                     scene = 'Field'
                     state = ''
                     varField.place = varSession.place
-                    varField.wall = dataField[varField.place]['Wall']
-                    varField.thing = dataField[varField.place]['Thing']
-                    varField.connection = dataField[varField.place]['Connection']
-                    varField.village = dataField[varField.place]['Village']
-                    varField.positionPlayer = dataField[varField.place]['Spawn']
+                    varField.wall = JSON.parse(JSON.stringify(dataField[varField.place]['Wall']))
+                    varField.thing = JSON.parse(JSON.stringify(dataField[varField.place]['Thing']))
+                    varField.connection = JSON.parse(JSON.stringify(dataField[varField.place]['Connection']))
+                    varField.village = JSON.parse(JSON.stringify(dataField[varField.place]['Village']))
+                    varField.positionPlayer = JSON.parse(JSON.stringify(dataField[varField.place]['Spawn']))
+                    varField.size = JSON.parse(JSON.stringify(dataField[varField.place]['Size']))
+
                 } else if (pointInsideRectArray(x, y, UI.title.buttonErase)) {
                     eraseData()
                 }

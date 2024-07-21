@@ -27,12 +27,15 @@ let varSelected = {
 
 let varField = {
     place : 'HomeTown',
-    village : true,
-    emeny : [],
 
+    village : true,
+    size : [1280, 720],
+    enemy : [],
     wall : [],
     thing : [],
     connection : [],
+    enemyList : [],
+    enemySpawn : [],
 
     positionPlayer : [0, 0],
     camera : [0, 0],
@@ -47,13 +50,22 @@ let varPlayer = {
         item : [],
     },
 
-    deck : [
+    deckCardList : [
         [1, 1, 2, 2, 3, 3]
     ],
+    deckEnergyList : [],
+
+    deckCard : [1, 1, 2, 2, 3, 3],
+    deckEnergy : [1, 1, 1, 1, 1, 1]
 }
 
 let varAdventure = {
     adventure : false,
+
+    equipment : [],
+    deckCard : [],
+    deckEnergy : [],
+    item : [],
 }
 
 let varGame = {
