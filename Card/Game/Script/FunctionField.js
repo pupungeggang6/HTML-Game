@@ -28,9 +28,9 @@ function interactKeyPress() {
             varField.destinationPosition = [varField.connection[i][2][0], varField.connection[i][2][1]]
 
             if (varAdventure.adventure === false && dataField[varField.connection[i][1]]['Village'] === false) {
-                state = 'ConfirmAdventureStart'
+                state = 'AdventureConfirmStart'
             } else if (varAdventure.adventure === true && dataField[varField.connection[i][1]]['Village'] === true) {
-                state = 'ConfirmAdventureEnd'
+                state = 'AdventureConfirmEnd'
             } else {
                 moveField()
             }

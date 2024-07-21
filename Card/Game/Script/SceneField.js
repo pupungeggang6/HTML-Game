@@ -18,7 +18,7 @@ function displayField() {
 
     drawField()
 
-    if (state === 'ConfirmAdventureStart' || state === 'ConfirmAdventureEnd') {
+    if (state === 'AdventureConfirmStart' || state === 'AdventureConfirmEnd') {
         drawConfirmAdventure()
     }
 
@@ -57,7 +57,7 @@ function mouseUpField(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.info.buttonClose)) {
                     state = ''
                 }
-            } else if (state === 'ConfirmAdventureStart') {
+            } else if (state === 'AdventureConfirmStart') {
                 if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonYes)) {
                     varAdventure.adventure = true
                     moveField()
@@ -67,7 +67,7 @@ function mouseUpField(x, y, button) {
                 } else if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonNo)) {
                     state = ''
                 }
-            } else if (state === 'ConfirmAdventureEnd') {
+            } else if (state === 'AdventureConfirmEnd') {
                 if (pointInsideRectArray(x, y, UI.confirmAdventure.buttonYes)) {
                     varAdventure.adventure = false
                     moveField()

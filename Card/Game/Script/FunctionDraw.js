@@ -48,7 +48,7 @@ function drawConfirmAdventure() {
     context.strokeRect(UI.confirmAdventure.rect[0], UI.confirmAdventure.rect[1], UI.confirmAdventure.rect[2], UI.confirmAdventure.rect[3])
     context.fillStyle = 'Black'
 
-    if (state === 'ConfirmAdventureStart') {
+    if (state === 'AdventureConfirmStart') {
         context.fillText('Start adventure?', UI.confirmAdventure.textTitle[0], UI.confirmAdventure.textTitle[1])
     } else {
         context.fillText('End adventure?', UI.confirmAdventure.textTitle[0], UI.confirmAdventure.textTitle[1])
