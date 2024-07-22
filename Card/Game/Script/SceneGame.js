@@ -17,8 +17,19 @@ function mouseUpGame(x, y, button) {
                 if (pointInsideRectArray(x, y, UI.game.start.buttonStart)) {
                     state = 'GameStartConfirm'
                 }
+
+                for (let i = 0; i < 3; i++) {
+                    if (pointInsideRectArray(x, y, UI.game.start.buttonSelectList[i])) {
+                        if (varSelected.startCardChange[i] === true) {
+                            varSelected.startCardChange[i] = false
+                        } else {
+                            varSelected.startCardChange[i] = true
+                        }
+                    }
+                }
             } else if (state === 'GameStartConfirm') {
                 if (pointInsideRectArray(x, y, UI.game.start.buttonStart)) {
+                    gameStartCardChange()
                     state = ''
                 }
             }

@@ -96,6 +96,11 @@ function drawGameStart() {
 
     for (let i = 0; i < 3; i++) {
         context.strokeRect(UI.game.start.buttonSelectList[i][0], UI.game.start.buttonSelectList[i][1], UI.game.start.buttonSelectList[i][2], UI.game.start.buttonSelectList[i][3])
+        if (varSelected.startCardChange[i] === true) {
+            context.strokeStyle = 'Lime'
+            context.strokeRect(UI.game.start.buttonSelectList[i][0], UI.game.start.buttonSelectList[i][1], UI.game.start.buttonSelectList[i][2], UI.game.start.buttonSelectList[i][3])
+            context.strokeStyle = 'Black'
+        }
     }
 
     context.strokeRect(UI.game.start.buttonStart[0], UI.game.start.buttonStart[1], UI.game.start.buttonStart[2], UI.game.start.buttonStart[3])

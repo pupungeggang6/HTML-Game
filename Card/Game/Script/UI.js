@@ -57,5 +57,10 @@ const UI = {
         textResume : [328, 344],
         buttonExit : [320, 400, 640, 80],
         textExit : [328, 424]
+    },
+
+    card : {
+        textAttack : [],
+        textLife : [],
     }
 }

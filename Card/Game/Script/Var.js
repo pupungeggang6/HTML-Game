@@ -23,6 +23,7 @@ let varSession = {
 
 let varSelected = {
     start : -1,
+    startCardChange : [false, false, false]
 }
 
 let varField = {
@@ -69,5 +70,11 @@ let varAdventure = {
 }
 
 let varGame = {
+    deckCard : [],
+    deckEnergy : [],
+    handCard : [],
+    handEnergy : [],
 
+    turn : 0,
+    field : [],
 }
