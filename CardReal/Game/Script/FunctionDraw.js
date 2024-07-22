@@ -43,6 +43,29 @@ function drawGameStart() {
     context.fillText('Start', UI.game.start.textStart[0], UI.game.start.textStart[1])
 }
 
+function drawGameLower() {
+    context.fillStyle = 'White'
+    context.fillRect(UI.game.lower.rect[0], UI.game.lower.rect[1], UI.game.lower.rect[2], UI.game.lower.rect[3])
+    context.strokeRect(UI.game.lower.rect[0], UI.game.lower.rect[1], UI.game.lower.rect[2], UI.game.lower.rect[3])
+    context.fillStyle = 'Black'
+
+    for (let i = 0; i < 6; i++) {
+        context.strokeRect(UI.game.lower.hand[i][0], UI.game.lower.hand[i][1], UI.game.lower.hand[i][2], UI.game.lower.hand[i][3])
+    }
+
+    context.strokeRect(UI.game.lower.cardBack[0], UI.game.lower.cardBack[1], UI.game.lower.cardBack[2], UI.game.lower.cardBack[3])
+}
+
 function drawField() {
+    for (let i = 0; i < 36; i++) {
+        for (let j = 0; j < 64; j++) {
+            context.drawImage(img.grass, Math.floor(j * 40 - varField.camera[0] - 1280), Math.floor(i * 40 - varField.camera[1] - 720))
+        }
+    }
+
+    if (varField.markActive === true) {
+        context.drawImage(img.mark, Math.floor(varField.mark[0] - varField.camera[0] - 20), Math.floor(varField.mark[1] - varField.camera[1] - 20))
+    }
+
     context.strokeRect(Math.floor(varField.positionPlayer[0] - varField.camera[0] - 20), Math.floor(varField.positionPlayer[1] - varField.camera[1] - 20), 40, 40)
 }

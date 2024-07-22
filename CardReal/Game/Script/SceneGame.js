@@ -13,6 +13,7 @@ function displayGame() {
     drawSceneInit()
 
     drawField()
+    drawGameLower()
 
     if (state === 'Start') {
         drawGameStart()
@@ -52,6 +53,13 @@ function mouseUpGame(x, y, button) {
                         state = ''
                     }
                 }
+            }
+        }
+    } else if (button === 2) {
+        if (menu === false) {
+            if (state === '') {
+                varField.markActive = true
+                varField.mark = [x + varField.camera[0], y + varField.camera[1]]
             }
         }
     }
