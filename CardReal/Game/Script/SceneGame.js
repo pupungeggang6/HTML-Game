@@ -65,6 +65,10 @@ function mouseUpGame(x, y, button) {
     }
 }
 
+function mouseMoveGame(x, y) {
+    varInput.positionMouse = [x, y]
+}
+
 function keyDownGame(key) {
 }
 

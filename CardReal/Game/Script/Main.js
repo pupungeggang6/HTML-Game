@@ -7,6 +7,7 @@ function main() {
     context = canvas.getContext('2d')
 
     canvas.addEventListener('mouseup', mouseUp, false)
+    canvas.addEventListener('mousemove', mouseMove, false)
     window.addEventListener('keydown', keyDown, false)
     window.addEventListener('keyup', keyUp, false)
 
@@ -47,6 +48,16 @@ function mouseUp(event) {
         mouseUpReady(x, y, button)
     } else if (scene === 'Game') {
         mouseUpGame(x, y, button)
+    }
+}
+
+function mouseMove(event) {
+    let targetRect = canvas.getBoundingClientRect()
+    let x = event.clientX - targetRect.left
+    let y = event.clientY - targetRect.top
+
+    if (scene === 'Game') {
+        mouseMoveGame(x, y)
     }
 }
 

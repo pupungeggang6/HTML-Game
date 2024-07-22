@@ -57,9 +57,10 @@ function drawGameLower() {
 }
 
 function drawField() {
-    for (let i = 0; i < 36; i++) {
-        for (let j = 0; j < 64; j++) {
-            context.drawImage(img.grass, Math.floor(j * 40 - varField.camera[0] - 1280), Math.floor(i * 40 - varField.camera[1] - 720))
+    let tileStart = [Math.floor(varField.positionPlayer[0] / 40) * 40, Math.floor(varField.positionPlayer[1] / 40) * 40]
+    for (let i = 0; i < 22; i++) {
+        for (let j = 0; j < 36; j++) {
+            context.drawImage(img.grass, Math.floor(tileStart[0] + j * 40 - varField.camera[0] - 720), Math.floor(tileStart[1] + i * 40 - varField.camera[1] - 440))
         }
     }
 

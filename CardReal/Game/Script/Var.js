@@ -10,6 +10,10 @@ let scene = 'Title'
 let state = ''
 let menu = false
 
+let varInput = {
+    positionMouse : [0, 0],
+}
+
 let varSelected = {
     character : -1,
     start : -1,
