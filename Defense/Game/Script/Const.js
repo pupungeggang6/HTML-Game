@@ -1,9 +1,0 @@
-const emptySave = {
-    level : [
-
-    ],
-
-    card : [
-        
-    ]
-}
