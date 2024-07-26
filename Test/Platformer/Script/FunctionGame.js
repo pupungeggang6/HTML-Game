@@ -1,0 +1,7 @@
+function movePlayer() {
+
+}
+
+function moveCamera() {
+    
+}
