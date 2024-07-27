@@ -16,6 +16,7 @@ function main() {
 
 function loop() {
     gameFrameCurrent = Date.now()
+    delta = gameFrameCurrent - gameFramePrevious
 
     if (scene === 'Main') {
         loopMain()
@@ -54,7 +55,7 @@ function keyDown(event) {
     }
 
     if (scene === 'Main') {
-        keyDownMain(x, y, button)
+        keyDownMain(key)
     }
 }
 
@@ -85,8 +86,9 @@ function keyUp(event) {
         varInput.junp = false
         event.preventDefault()
     }
+
     if (scene === 'Main') {
-        keyUpMain(x, y, button)
+        keyUpMain(key)
     }
 }
 

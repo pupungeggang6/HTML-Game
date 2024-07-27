@@ -21,6 +21,8 @@ let varInput = {
 
 let varPlayer = {
     position : [80, 620],
+    positionTemp : [80, 620],
+    speed : 240,
 
     ground : false,
     jumpNum : 1,
@@ -30,7 +32,7 @@ let varPlayer = {
 }
 
 let varField = {
-    gravity : 1600,
-    wall : [[0, 640, 720, 80]],
+    gravity : 800,
+    wall : [[0, 640, 720, 80], [0, 320, 720, 80], [960, 80, 80, 640]],
     camera : [0, 0],
 }
