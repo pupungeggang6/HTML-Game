@@ -1,7 +1,8 @@
 function loopMain() {
     if (menu === false) {
         if (state === '') {
-            movePlayer()
+            freeMove()
+            //movePlayer()
             moveCamera()
         }
     }
@@ -13,7 +14,7 @@ function displayMain() {
     drawSceneInit()
     drawField()
 
-    context.fillText(`${varPlayer.positionTemp[1]}`, 8, 8)
+    context.fillText(`${varPlayer.collision}`, 8, 8)
 }
 
 function keyDownMain(key) {

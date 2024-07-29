@@ -22,7 +22,9 @@ let varInput = {
 let varPlayer = {
     position : [80, 620],
     positionTemp : [80, 620],
+    collision : ['N', 'N', 0, 0],
     speed : 240,
+    velocity : [0, 0],
 
     ground : false,
     jumpNum : 1,

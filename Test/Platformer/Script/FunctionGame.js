@@ -1,51 +1,102 @@
+function twoRectCollide(a, b) {
+    let collision = ['N', 'N', 0, 0]
+    
+    let al = a[0]
+    let ar = a[0] + a[2]
+    let au = a[1]
+    let ad = a[1] + a[3]
+    let bl = b[0]
+    let br = b[0] + b[2]
+    let bu = b[1]
+    let bd = b[1] + b[3]
+
+    if (bl < al && al < br) {
+        if (!(bd < au || bu > ad)) {
+            collision[0] = 'R'
+            collision[2] = br - al
+        }
+    }
+    
+    if (bl < ar && ar < br) {
+        if (!(bd < au || bu > ad)) {
+            collision[0] = 'L'
+            collision[2] = ar - bl
+        }
+    }
+
+    if (bu < au && au < bd) {
+        if (!(br < al || bl > ar)) {
+            collision[1] = 'D'
+            collision[3] = bd - au
+        }
+    }
+    
+    if (bu < ad && ad < bd) {
+        if (!(br < al || bl > ar)) {
+            collision[1] = 'U'
+            collision[3] = ad - bu
+        }
+    }
+
+    return collision
+}
+
 function movePlayer() {
     varPlayer.positionTemp[0] = varPlayer.position[0]
     varPlayer.positionTemp[1] = varPlayer.position[1]
 
-    // Horizontal
-    if (varInput.left === true) {
-        varPlayer.positionTemp[0] -= varPlayer.speed * delta / 1000
+    varPlayer.position[0] = varPlayer.positionTemp[0]
+    varPlayer.position[1] = varPlayer.positionTemp[1]
+}
+
+function freeMove() {
+    varPlayer.positionTemp[0] = varPlayer.position[0]
+    varPlayer.positionTemp[1] = varPlayer.position[1]
+
+    if (varInput.left === true || varInput.right === true) {
+        if (varInput.left === true) {
+            varPlayer.velocity[0] = -200
+        } else if (varInput.right === true) {
+            varPlayer.velocity[0] = 200
+        }
+    } else {
+        varPlayer.velocity[0] = 0
     }
 
-    if (varInput.right === true) {
-        varPlayer.positionTemp[0] += varPlayer.speed * delta / 1000
+    if (varInput.up === true || varInput.down === true) {
+        if (varInput.up === true) {
+            varPlayer.velocity[1] = -200
+        } else if (varInput.down === true) {
+            varPlayer.velocity[1] = 200
+        }
+    } else {
+        varPlayer.velocity[1] = 0
     }
+
+    varPlayer.positionTemp[0] += varPlayer.velocity[0] * delta / 1000
+    varPlayer.positionTemp[1] += varPlayer.velocity[1] * delta / 1000
 
     for (let i = 0; i < varField.wall.length; i++) {
-        let leftWallRect = [varField.wall[i][0] + varField.wall[i][2] - 20, varField.wall[i][1], 40, varField.wall[i][3]]
-        let rightWallRect = [varField.wall[i][0] - 20, varField.wall[i][1], 40, varField.wall[i][3]]
+        let tempCollision = twoRectCollide(varField.wall[i], [varPlayer.positionTemp[0] - 20, varPlayer.positionTemp[1] - 20, 40, 40])
 
-        if (pointInsideRectArray(varPlayer.positionTemp[0], varPlayer.positionTemp[1], leftWallRect)) {
-            varPlayer.positionTemp[0] = varField.wall[i][0] + varField.wall[i][2] + 20
+        if (tempCollision[0] != 'N' || tempCollision[1] != 'N') {
+            varPlayer.collision = tempCollision
         }
 
-        if (pointInsideRectArray(varPlayer.positionTemp[0], varPlayer.positionTemp[1], rightWallRect)) {
-            varPlayer.positionTemp[0] = varField.wall[i][0] - 20
-        }
-    }
-
-    // Vertical
-    varPlayer.ySpeed += varField.gravity * delta / 1000
-
-    if (varInput.up === true) {
-        varPlayer.ySpeed = varPlayer.jumpPower
-    }
-
-    varPlayer.positionTemp[1] += varPlayer.ySpeed * delta / 1000
-
-    // Celling, Ground Collide Detection
-    for (let i = 0; i < varField.wall.length; i++) {
-        let upperWallRect = [varField.wall[i][0] - 20, varField.wall[i][1] + varField.wall[i][3] - 20, varField.wall[i][2] + 40, 40]
-        if (pointInsideRectArray(varPlayer.positionTemp[0], varPlayer.positionTemp[1], upperWallRect)) {
-            varPlayer.positionTemp[1] = varField.wall[i][1] + varField.wall[i][3] + 20
-            varPlayer.ySpeed = 0
+        if (tempCollision[0] == 'L' && varPlayer.velocity[0] < 0) {
+            varPlayer.positionTemp[0] += tempCollision[2] + 0.1
         }
 
-        let groundTouchRect = [varField.wall[i][0] - 20, varField.wall[i][1] - 20, varField.wall[i][2] + 40, 40]
-        if (pointInsideRectArray(varPlayer.positionTemp[0], varPlayer.positionTemp[1], groundTouchRect) && varPlayer.ySpeed > 0) {
-            varPlayer.ground = true
-            varPlayer.positionTemp[1] = varField.wall[i][1] - 20
-            varPlayer.ySpeed = 0
+        if (tempCollision[0] == 'R' && varPlayer.velocity[0] > 0) {
+            varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
+        }
+
+        if (tempCollision[1] == 'U' && varPlayer.velocity[1] < 0) {
+            varPlayer.positionTemp[1] += tempCollision[3] + 0.1
+        }
+
+        if (tempCollision[1] == 'D' && varPlayer.velocity[1] > 0) {
+            varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
         }
     }
 
