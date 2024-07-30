@@ -83,19 +83,19 @@ function freeMove() {
             varPlayer.collision = tempCollision
         }
 
-        if (tempCollision[0] == 'L' && varPlayer.velocity[0] < 0) {
+        if (tempCollision[0] == 'L') {
             varPlayer.positionTemp[0] += tempCollision[2] + 0.1
         }
 
-        if (tempCollision[0] == 'R' && varPlayer.velocity[0] > 0) {
+        if (tempCollision[0] == 'R') {
             varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
         }
 
-        if (tempCollision[1] == 'U' && varPlayer.velocity[1] < 0) {
+        if (tempCollision[1] == 'U') {
             varPlayer.positionTemp[1] += tempCollision[3] + 0.1
         }
 
-        if (tempCollision[1] == 'D' && varPlayer.velocity[1] > 0) {
+        if (tempCollision[1] == 'D') {
             varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
         }
     }
