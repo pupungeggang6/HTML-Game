@@ -75,6 +75,7 @@ function freeMove() {
 
     varPlayer.positionTemp[0] += varPlayer.velocity[0] * delta / 1000
     varPlayer.positionTemp[1] += varPlayer.velocity[1] * delta / 1000
+    displayRect = [varPlayer.positionTemp[0], varPlayer.positionTemp[1], 40, 40]
 
     for (let i = 0; i < varField.wall.length; i++) {
         let tempCollision = twoRectCollide(varField.wall[i], [varPlayer.positionTemp[0] - 20, varPlayer.positionTemp[1] - 20, 40, 40])
