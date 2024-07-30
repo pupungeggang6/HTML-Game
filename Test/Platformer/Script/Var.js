@@ -29,13 +29,16 @@ let varPlayer = {
     ground : false,
     jumpNum : 1,
     jumpPower : -400,
+    jumpLock : true,
+    jumping : false,
+    jumpFirst : false,
     jumpTime : 0,
-    ySpeed : 0,
 }
 
 let varField = {
-    gravity : 800,
-    wall : [[0, 640, 720, 80], [0, 320, 720, 80], [960, 80, 80, 640]],
+    gravity : 1600,
+    terminalSpeed : 800,
+    wall : [[40, 640, 160, 40], [280, 600, 160, 40], [560, 520, 160, 40], [840, 520, 40, 40], [1000, 520, 160, 40], [1160, 400, 40, 160]],
     camera : [0, 0],
 }
 

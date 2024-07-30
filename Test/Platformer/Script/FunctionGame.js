@@ -11,28 +11,28 @@ function twoRectCollide(a, b) {
     let bd = b[1] + b[3]
 
     if (bl < al && al < br) {
-        if (!(bd < au || bu > ad)) {
+        if (!(bd <= au || bu >= ad)) {
             collision[0] = 'R'
             collision[2] = br - al
         }
     }
     
     if (bl < ar && ar < br) {
-        if (!(bd < au || bu > ad)) {
+        if (!(bd <= au || bu >= ad)) {
             collision[0] = 'L'
             collision[2] = ar - bl
         }
     }
 
     if (bu < au && au < bd) {
-        if (!(br < al || bl > ar)) {
+        if (!(br <= al || bl >= ar)) {
             collision[1] = 'D'
             collision[3] = bd - au
         }
     }
     
     if (bu < ad && ad < bd) {
-        if (!(br < al || bl > ar)) {
+        if (!(br <= al || bl >= ar)) {
             collision[1] = 'U'
             collision[3] = ad - bu
         }
@@ -44,6 +44,115 @@ function twoRectCollide(a, b) {
 function movePlayer() {
     varPlayer.positionTemp[0] = varPlayer.position[0]
     varPlayer.positionTemp[1] = varPlayer.position[1]
+
+    if (varInput.left === true || varInput.right === true) {
+        if (varInput.left === true) {
+            varPlayer.velocity[0] = -200
+        } else if (varInput.right === true) {
+            varPlayer.velocity[0] = 200
+        }
+    } else {
+        varPlayer.velocity[0] = 0
+    }
+
+    if (varInput.up === true) {
+        if (varPlayer.jumpNum > 0 && varPlayer.jumpLock === false && varPlayer.ground === true) {
+            varPlayer.jumpNum -= 1
+            varPlayer.ground = false
+            varPlayer.jumping = true
+            varPlayer.jumpFirst = true
+            varPlayer.jumpTime = 0
+            varPlayer.velocity[1] = varPlayer.jumpPower
+            varPlayer.jumpLock = true
+        }
+
+        if (varPlayer.jumpFirst === true && varPlayer.jumpNum > 0 && varPlayer.jumping === false) {
+            varPlayer.jumpNum -= 1
+            varPlayer.jumping = true
+            varPlayer.jumpTime = 0
+            varPlayer.velocity[1] = varPlayer.jumpPower
+            varPlayer.jumpLock = true
+        }
+
+        if (varPlayer.jumping === true) {
+            if (varPlayer.jumpTime < 0.25) {
+                varPlayer.jumpTime += delta / 1000
+                varPlayer.velocity[1] = varPlayer.jumpPower
+            }
+        }
+    } else {
+        varPlayer.jumping = false
+        varPlayer.jumpLock = false
+    }
+
+    if (varPlayer.ground === false) {
+        if (varPlayer.velocity[1] + varField.gravity * delta / 1000 < varField.terminalSpeed) {
+            varPlayer.velocity[1] += varField.gravity * delta / 1000
+        } else {
+            varPlayer.velocity[1] = varField.terminalSpeed
+        }
+    }
+
+    varPlayer.positionTemp[0] += varPlayer.velocity[0] * delta / 1000
+    varPlayer.positionTemp[1] += varPlayer.velocity[1] * delta / 1000
+
+    varPlayer.ground = false
+
+    for (let i = 0; i < varField.wall.length; i++) {
+        let tempCollision = twoRectCollide(varField.wall[i], [varPlayer.positionTemp[0] - 20, varPlayer.positionTemp[1] - 20, 40, 40])
+
+        if (tempCollision[0] != 'N' || tempCollision[1] != 'N') {
+            varPlayer.collision = tempCollision
+        }
+
+        if (tempCollision[0] != 'N' && tempCollision[1] != 'N') {
+            if (tempCollision[2] < tempCollision[3]) {
+                if (tempCollision[0] === 'L') {
+                    varPlayer.positionTemp[0] += tempCollision[2] + 0.1
+                }
+
+                if (tempCollision[0] === 'R') {
+                    varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
+                }
+            } else {
+                if (tempCollision[1] === 'U') {
+                    varPlayer.positionTemp[1] += tempCollision[3] + 0.1
+                    varPlayer.velocity[1] = 0
+                    varPlayer.jumping = false
+                }
+
+                if (tempCollision[1] === 'D') {
+                    varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
+                    varPlayer.ground = true
+                    varPlayer.jumpNum = 2
+                    varPlayer.velocity[1] = 0
+                    varPlayer.jumpFirst = false
+                }
+            }
+        } else if (tempCollision[0] != 'N') {
+            if (tempCollision[0] === 'L') {
+                varPlayer.positionTemp[0] += tempCollision[2] + 0.1
+            }
+
+            if (tempCollision[0] === 'R') {
+                varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
+            }
+        } else if (tempCollision[1] != 'N') {
+            if (tempCollision[1] === 'U') {
+                varPlayer.positionTemp[1] += tempCollision[3] + 0.1
+                varPlayer.velocity[1] = 0
+                varPlayer.jumping = false
+            }
+
+            if (tempCollision[1] === 'D') {
+                varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
+                varPlayer.ground = true
+                varPlayer.jumpNum = 2
+                varPlayer.velocity[1] = 0
+                varPlayer.jumpFirst = false
+            }
+        }
+    }
 
     varPlayer.position[0] = varPlayer.positionTemp[0]
     varPlayer.position[1] = varPlayer.positionTemp[1]
@@ -75,7 +184,6 @@ function freeMove() {
 
     varPlayer.positionTemp[0] += varPlayer.velocity[0] * delta / 1000
     varPlayer.positionTemp[1] += varPlayer.velocity[1] * delta / 1000
-    displayRect = [varPlayer.positionTemp[0], varPlayer.positionTemp[1], 40, 40]
 
     for (let i = 0; i < varField.wall.length; i++) {
         let tempCollision = twoRectCollide(varField.wall[i], [varPlayer.positionTemp[0] - 20, varPlayer.positionTemp[1] - 20, 40, 40])
@@ -84,25 +192,52 @@ function freeMove() {
             varPlayer.collision = tempCollision
         }
 
-        if (tempCollision[0] == 'L') {
-            varPlayer.positionTemp[0] += tempCollision[2] + 0.1
-        }
+        if (tempCollision[0] != 'N' && tempCollision[1] != 'N') {
+            if (tempCollision[2] < tempCollision[3]) {
+                if (tempCollision[0] === 'L') {
+                    varPlayer.positionTemp[0] += tempCollision[2] + 0.1
+                }
 
-        if (tempCollision[0] == 'R') {
-            varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
-        }
+                if (tempCollision[0] === 'R') {
+                    varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
+                }
+            } else {
+                if (tempCollision[1] === 'U') {
+                    varPlayer.positionTemp[1] += tempCollision[3] + 0.1
+                }
 
-        if (tempCollision[1] == 'U') {
-            varPlayer.positionTemp[1] += tempCollision[3] + 0.1
-        }
+                if (tempCollision[1] === 'D') {
+                    varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
+                }
+            }
+        } else if (tempCollision[0] != 'N') {
+            if (tempCollision[0] === 'L') {
+                varPlayer.positionTemp[0] += tempCollision[2] + 0.1
+            }
 
-        if (tempCollision[1] == 'D') {
-            varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
+            if (tempCollision[0] === 'R') {
+                varPlayer.positionTemp[0] -= tempCollision[2] + 0.1
+            }
+        } else if (tempCollision[1] != 'N') {
+            if (tempCollision[1] === 'U') {
+                varPlayer.positionTemp[1] += tempCollision[3] + 0.1
+            }
+
+            if (tempCollision[1] === 'D') {
+                varPlayer.positionTemp[1] -= tempCollision[3] + 0.1
+            }
         }
     }
 
     varPlayer.position[0] = varPlayer.positionTemp[0]
     varPlayer.position[1] = varPlayer.positionTemp[1]
+}
+
+function checkArea() {
+    if (varPlayer.position[1] > 740) {
+        varPlayer.position[0] = 80
+        varPlayer.position[1] = 620
+    }
 }
 
 function moveCamera() {
