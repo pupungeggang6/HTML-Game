@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Card Play Test</title>
+        <style>
+            #Screen {
+                border : 2px solid black;
+                position : absolute;
+                left : 0px;
+                top : 0px;
+            }
+
+            #Debug {
+                position : absolute;
+                left : 1300px;
+                top : 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="Main">
+            <canvas id="Screen" width="1280" height="720"></canvas>
+            <script src="Script/UI.js"></script>
+            <script src="Script/Data.js"></script>
+            <script src="Script/Var.js"></script>
+            <script src="Script/FunctionDraw.js"></script>
+            <script src="Script/FunctionGame.js"></script>
+            <script src="Script/Scene.js"></script>
+            <script src="Script/Main.js"></script>
+        </div>
+        <div id="Debug">
+            <input type="text" id="TextParse"/>
+            <button onclick="onButtonParseClicked()">Parse</button>
+            <br>
+            <input type="text" id="TextProcess"/>
+            <button onclick="onButtonProcessClicked()">Process</button>
+            <p id=TextParseResult>Parse Result</p>
+            <p id=TextProcessResult>Process Result</p>
+        </div>
+    </body>
+</html>
