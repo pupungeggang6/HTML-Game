@@ -15,5 +15,9 @@ let varGame = {
     handCard : [],
     handCrystal : [],
 
-    field : [],
+    field : [null, null, null, null, null, null, null, null, null, null, null, null, null, null],
+
+    stackEffect : [],
 }
+
+let tempRect = [0, 0, 40, 40]

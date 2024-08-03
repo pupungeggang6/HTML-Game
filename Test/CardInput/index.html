@@ -15,6 +15,11 @@
                 left : 1300px;
                 top : 0px;
             }
+
+            @font-face {
+                font-family: 'neodgm';
+                src: url('Font/neodgm.ttf');
+            }
         </style>
     </head>
     <body>
@@ -29,13 +34,9 @@
             <script src="Script/Main.js"></script>
         </div>
         <div id="Debug">
-            <input type="text" id="TextParse"/>
-            <button onclick="onButtonParseClicked()">Parse</button>
-            <br>
-            <input type="text" id="TextProcess"/>
-            <button onclick="onButtonProcessClicked()">Process</button>
-            <p id=TextParseResult>Parse Result</p>
-            <p id=TextProcessResult>Process Result</p>
+            <input type="text" id="TextRun"/>
+            <button onclick="onButtonRunClicked()">Run</button>
+            <p id="TextRunResult">Run Result</p>
         </div>
     </body>
 </html>
