@@ -4,10 +4,14 @@ function onButtonRunClicked() {
     let text = document.getElementById('TextRun').value
 
     document.getElementById('TextRunResult').innerHTML += `<br> >>> ${text}`
-    document.getElementById('TextRunResult').innerHTML += `<br>${JSON.stringify(parseText(text))}`
 
-    let result = run(parseText(text), envGlobal)
-    document.getElementById('TextRunResult').innerHTML += `<br>${JSON.stringify(result)}`
+    if (text === 'clear') {
+        envGlobal = {}
+    } else {
+        document.getElementById('TextRunResult').innerHTML += `<br>${JSON.stringify(parseText(text))}`
+        let result = run(parseText(text), envGlobal)
+        document.getElementById('TextRunResult').innerHTML += `<br>${JSON.stringify(result)}`
+    }
 
     envGlobal = result[1]
 }
