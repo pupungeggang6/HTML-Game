@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>WebGL HUD Example</title>
+        <style>
+            #Screen {
+                border : 2px solid black;
+                position : absolute;
+                left : 0px;
+                top : 0px;
+            }
+
+            #Sample {
+                border : 2px solid black;
+                position : absolute;
+                left : 800px;
+                top : 100px;
+            }
+        </style>
+    </head>
+    <body>
+        <canvas id="Screen" width="800" height="600"></canvas>
+        <canvas id="Sample" width="200" height="200"></canvas>
+        <screen src="Script/Asset.js"></screen>
+        <screen src="Script/UI.js"></screen>
+        <screen src="Script/Const.js"></screen>
+        <screen src="Script/Var.js"></screen>
+
+        <screen src="Script/FunctionPhysics.js"></screen>
+        <screen src="Script/FunctionDraw.js"></screen>
+        <screen src="Script/FunctionGame.js"></screen>
+
+        <screen src="Script/SceneMain.js"></screen>
+
+        <screen src="Script/Main.js"></screen>
+    </body>
+</html>

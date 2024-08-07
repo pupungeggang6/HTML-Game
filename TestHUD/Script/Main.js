@@ -4,20 +4,20 @@ window.oncontextmenu = rightClick
 
 function main() {
     canvas = document.getElementById('Screen')
-    context = canvas.getContext('2d')
+    gl = canvas.getContext('webgl2')
 
-    canvas.addEventListener('mouseup', mouseUp, false)
-
-    imageLoad()
+    window.addEventListener('mouseup', mouseUp, false)
+    window.addEventListener('keydown', keydown, false)
+    window.addEventListener('keyup', keyup, false)
 
     gameFrameCurrent = Date.now()
     gameFramePrevious = Date.now() - 16
-    gameLoop = requestAnimationFrame(loop)
+    gameInstance = requestAnimationFrame(loop)
 }
 
 function loop() {
     gameFrameCurrent = Date.now()
-    delta = gameFrameCurrent - gameFramePrevious
+    delta = gameFrameCurrent - gameFramePrevious    
 
     if (scene === 'Main') {
         loopMain()
@@ -37,9 +37,25 @@ function mouseUp(event) {
     }
 }
 
+function keyDown(event) {
+    let key = event.key
+
+    if (scene === 'Main') {
+        keyDownMain(key)
+    }
+}
+
+function keyUp(event) {
+    let key = event.key
+
+    if (scene === 'Main') {
+        keyUpMain(key)
+    }
+}
+
 function errorHandle(err, url, line, col, obj) {
     if (obj != null) {
-        cancelAnimationFrame(loop)
+        cancelAnimationFrame(gameInstance)
     }
 }
 
