@@ -3,6 +3,7 @@ function loopMain() {
         textPosition[0] = 0
     }
     textPosition[0] += 200 * delta / 1000
+    aaa += 0.1 * delta / 1000
 
     displayMain()
 }

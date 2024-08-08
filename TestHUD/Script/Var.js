@@ -45,3 +45,5 @@ let texture = {
 }
 
 let textPosition = [0, 24]
+
+let aaa = 0
