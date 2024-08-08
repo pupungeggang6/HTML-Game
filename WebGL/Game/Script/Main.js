@@ -63,7 +63,18 @@ function glInit() {
     gl.linkProgram(shaderProgram)
     gl.useProgram(shaderProgram)
 
-    var texture = gl.createTexture()
+    positionLocation = gl.getAttribLocation(shaderProgram, "a_position")
+    texcoordLocation = gl.getAttribLocation(shaderProgram, "a_texcoord")
+
+    bufferVertex = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferVertex)
+    gl.enableVertexAttribArray(positionLocation)
+
+    bufferTexture = gl.createBuffer()
+    gl.bindBuffer(gl.ARRAY_BUFFER, bufferTexture)
+    gl.enableVertexAttribArray(texcoordLocation)
+
+    texture = gl.createTexture()
     gl.bindTexture(gl.TEXTURE_2D, texture)
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
@@ -71,19 +82,6 @@ function glInit() {
 
     gl.bindTexture(gl.TEXTURE_2D, texture)
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img.smile)
-
-    var positionLocation = gl.getAttribLocation(shaderProgram, "a_position")
-    var texcoordLocation = gl.getAttribLocation(shaderProgram, "a_texcoord")
-
-    bufferVertex = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, bufferVertex)
-    gl.enableVertexAttribArray(positionLocation)
-    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
-
-    bufferTexture = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, bufferTexture)
-    gl.enableVertexAttribArray(texcoordLocation)
-    gl.vertexAttribPointer(texcoordLocation, 2, gl.FLOAT, false, 0, 0)
 }
 
 function loop() {

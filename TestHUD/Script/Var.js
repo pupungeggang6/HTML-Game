@@ -1,5 +1,7 @@
 let canvas
 let gl
+let canvasSample
+let contextSample
 
 let scene = 'Main'
 let state = ''
@@ -23,15 +25,23 @@ let glVar = {
         programHUD : null
     },
 
-    vbo : {
-        vertex3D : null,
-        vertexHUD : null
-    },
+    vbo : null,
+    bt : null,
 
     location : {
         color3D : null,
-        colorHUD : null,
+        textureHUD : null,
         vertex3D : null,
         vertexHUD : null
     },
 }
+
+let texture = {
+    test : {
+        canvas : null,
+        context : null,
+        texture : null,
+    },
+}
+
+let textPosition = [0, 24]

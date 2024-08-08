@@ -20,3 +20,6 @@ let gameFramePrevious
 let delta
 
 let aaa = 0
+
+let positionLocation
+let texcoordLocation

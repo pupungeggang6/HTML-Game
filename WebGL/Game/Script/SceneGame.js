@@ -19,7 +19,7 @@ function displayGame() {
     gl.enable(gl.DEPTH_TEST)
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
 
-    let tempRect = [aaa, 0, 40 + aaa, 0, aaa, 40, aaa, 40, 40 + aaa, 0, 40 + aaa, 40]
+    let tempRect = [10, 0, 50, 0, 10, 40, 10, 40, 50, 0, 50, 40]
     
     for (let i = 0; i < 12; i++) {
         if (i % 2 === 0) {
@@ -32,9 +32,8 @@ function displayGame() {
 
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferVertex)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(tempRect), gl.STATIC_DRAW)
-    //bufferIndex = gl.createBuffer()
-    //gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, bufferIndex)
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferTexture)
+    gl.vertexAttribPointer(texcoordLocation, 2, gl.FLOAT, false, 0, 0)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
         0.0,  0.0,
         1.0,  0.0,
@@ -61,6 +60,7 @@ function displayGame() {
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(tempRect), gl.STATIC_DRAW)
 
     gl.bindBuffer(gl.ARRAY_BUFFER, bufferTexture)
+    gl.vertexAttribPointer(positionLocation, 2, gl.FLOAT, false, 0, 0)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([
         0.0,  0.0,
         1.0,  0.0,

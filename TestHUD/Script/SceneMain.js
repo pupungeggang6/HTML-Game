@@ -1,11 +1,13 @@
 function loopMain() {
+    textPosition[0] += 200 * delta / 1000
+    
     displayMain()
 }
 
 function displayMain() {
     drawSceneInit()
     drawScreen()
-    //drawHUD()
+    drawHUD()
 }
 
 function mouseUpMain(x, y, button) {

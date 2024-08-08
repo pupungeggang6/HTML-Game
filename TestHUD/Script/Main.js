@@ -5,6 +5,8 @@ window.oncontextmenu = rightClick
 function main() {
     canvas = document.getElementById('Screen')
     gl = canvas.getContext('webgl2')
+    canvasSample = document.getElementById('Sample')
+    contextSample = canvasSample.getContext('2d')
 
     window.addEventListener('mouseup', mouseUp, false)
     window.addEventListener('keydown', keyDown, false)
@@ -12,6 +14,7 @@ function main() {
 
     imageLoad()
     glInit()
+    textureInit()
 
     gameFrameCurrent = Date.now()
     gameFramePrevious = Date.now() - 16
@@ -38,18 +41,22 @@ function glInit() {
 
     glVar.shader.vertexHUDSource = `
         attribute vec4 a_position;
-
+        attribute vec2 a_texcoord;
+        varying vec2 v_texcoord;
+        
         void main() {
             gl_Position = a_position;
+            v_texcoord = a_texcoord;
         }
     `
 
     glVar.shader.fragmentHUDSource = `
         precision mediump float;
-        uniform vec4 u_color;
-
+        varying vec2 v_texcoord;
+        uniform sampler2D u_texture;
+        
         void main() {
-            gl_FragColor = vec4(0.0, 0.0, 1.0, 1.0);
+            gl_FragColor = texture2D(u_texture, v_texcoord);
         }
     `
 
@@ -62,6 +69,7 @@ function glInit() {
     glVar.shader.program3D = gl.createProgram()
     gl.attachShader(glVar.shader.program3D, glVar.shader.vertex3D)
     gl.attachShader(glVar.shader.program3D, glVar.shader.fragment3D)
+    gl.linkProgram(glVar.shader.program3D)
     
     glVar.shader.vertexHUD = gl.createShader(gl.VERTEX_SHADER)
     gl.shaderSource(glVar.shader.vertexHUD, glVar.shader.vertexHUDSource)
@@ -72,24 +80,32 @@ function glInit() {
     glVar.shader.programHUD = gl.createProgram()
     gl.attachShader(glVar.shader.programHUD, glVar.shader.vertexHUD)
     gl.attachShader(glVar.shader.programHUD, glVar.shader.fragmentHUD)
+    gl.linkProgram(glVar.shader.programHUD)
     
-    gl.linkProgram(glVar.shader.program3D)
+    glVar.vbo = gl.createBuffer()
+    glVar.bt = gl.createBuffer()
+    
     glVar.location.vertex3D = gl.getAttribLocation(glVar.shader.program3D, "a_position")
     glVar.location.color3D = gl.getUniformLocation(glVar.shader.program3D, "u_color")
-
-    glVar.vbo.vertex3D = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, glVar.vbo.vertex3D)
     gl.enableVertexAttribArray(glVar.location.vertex3D)
-    gl.vertexAttribPointer(glVar.location.vertex3D, 3, gl.FLOAT, false, 0, 0)
 
-    gl.linkProgram(glVar.shader.programHUD)
     glVar.location.vertexHUD = gl.getAttribLocation(glVar.shader.programHUD, "a_position")
-    glVar.location.colorHUD = gl.getUniformLocation(glVar.shader.programHUD, "u_color")
-
-    glVar.vbo.vertexHUD = gl.createBuffer()
-    gl.bindBuffer(gl.ARRAY_BUFFER, glVar.vbo.vertexHUD)
+    glVar.location.textureHUD = gl.getAttribLocation(glVar.shader.programHUD, "a_texcoord")
     gl.enableVertexAttribArray(glVar.location.vertexHUD)
-    gl.vertexAttribPointer(glVar.location.vertexHUD, 3, gl.FLOAT, false, 0, 0)
+    gl.enableVertexAttribArray(glVar.location.textureHUD)
+}
+
+function textureInit() {
+    texture.test.canvas = document.createElement('canvas')
+    texture.test.context = texture.test.canvas.getContext('2d', {willReadFrequently : true})
+    texture.test.canvas.width = 800
+    texture.test.canvas.height = 600
+
+    texture.test.texture = gl.createTexture()
+    gl.bindTexture(gl.TEXTURE_2D, texture.test.texture)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+    gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
 }
 
 function loop() {
