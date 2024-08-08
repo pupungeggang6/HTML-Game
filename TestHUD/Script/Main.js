@@ -109,6 +109,7 @@ function textureInit() {
 }
 
 function loop() {
+    gameFramePrevious = gameFrameCurrent
     gameFrameCurrent = Date.now()
     delta = gameFrameCurrent - gameFramePrevious    
 
@@ -116,7 +117,6 @@ function loop() {
         loopMain()
     }
 
-    gameFramePrevious = Date.now()
     gameInstance = requestAnimationFrame(loop)
 }
 
