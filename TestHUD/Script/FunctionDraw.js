@@ -13,15 +13,15 @@ function drawScreen() {
 
     gl.uniform4f(glVar.location.color3D, 0.0, 1.0, 0.0, 1.0)
     gl.bindBuffer(gl.ARRAY_BUFFER, glVar.vbo.vertex3D)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 1, 1, 0, 1, 1, 1, 1]), gl.STATIC_DRAW)
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 0, 1, 0, 0, 1, 1, 0]), gl.STATIC_DRAW)
     gl.drawArrays(gl.TRIANGLES, 0, 3)
 }
 
 function drawHUD() {
-    gl.enable(gl.DEPTH_TEST)
+    gl.disable(gl.DEPTH_TEST)
     gl.useProgram(glVar.shader.programHUD)
 
     gl.bindBuffer(gl.ARRAY_BUFFER, glVar.vbo.vertexHUD)
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 1, -1, 0, 1, -1, -1, 1]), gl.STATIC_DRAW)
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 0, 0, -1, 0, 0, -1, -1, 0]), gl.STATIC_DRAW)
     gl.drawArrays(gl.TRIANGLES, 0, 3)
 }

@@ -4,8 +4,8 @@ function loopMain() {
 
 function displayMain() {
     drawSceneInit()
-    //drawScreen()
-    drawHUD()
+    drawScreen()
+    //drawHUD()
 }
 
 function mouseUpMain(x, y, button) {
