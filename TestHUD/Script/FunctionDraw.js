@@ -28,7 +28,7 @@ function updateTexture() {
     texture.test.context.clearRect(0, 0, 800, 600)
 
     texture.test.context.fillStyle = 'White'
-    texture.test.context.fillRect(0, 0, 320, 80)
+    texture.test.context.fillRect(0, 0, 800, 80)
     texture.test.context.fillStyle = 'Black'
     texture.test.context.fillText('HUD', textPosition[0], textPosition[1])
 

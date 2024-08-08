@@ -1,6 +1,9 @@
 function loopMain() {
+    if (textPosition[0] > 800) {
+        textPosition[0] = 0
+    }
     textPosition[0] += 200 * delta / 1000
-    
+
     displayMain()
 }
 
