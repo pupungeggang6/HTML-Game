@@ -32,7 +32,7 @@ function updateTexture() {
     texture.test.context.fillStyle = 'Black'
     texture.test.context.fillText('HUD', textPosition[0], textPosition[1])
 
-    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.test.context.getImageData(0, 0, 800, 600))
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.test.canvas)
 }
 
 function drawHUD() {
