@@ -30,7 +30,7 @@ function updateTexture() {
     texture.test.context.fillStyle = 'White'
     texture.test.context.fillRect(0, 0, 800, 80)
     texture.test.context.fillStyle = 'Black'
-    texture.test.context.fillText('HUD', textPosition[0], textPosition[1])
+    texture.test.context.fillText(`${delta}`, textPosition[0], textPosition[1])
 
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, texture.test.canvas)
 }
