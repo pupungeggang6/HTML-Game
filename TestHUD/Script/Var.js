@@ -11,22 +11,27 @@ let delta
 
 let glVar = {
     shader : {
-        vertex3D,
-        vertex3DSoruce,
-        fragment3D,
-        fragment3DSource,
-        vertexHUD,
-        vertexHUDSource,
-        fragmentHUD,
-        fragmentHUDSource,
+        vertex3D : null,
+        vertex3DSoruce : null,
+        fragment3D : null,
+        fragment3DSource : null,
+        vertexHUD : null,
+        vertexHUDSource : null,
+        fragmentHUD : null,
+        fragmentHUDSource : null,
+        program3D : null,
+        programHUD : null
     },
 
     vbo : {
-        vertex3D,
-        vertexHUD
+        vertex3D : null,
+        vertexHUD : null
     },
 
     location : {
-
+        color3D : null,
+        colorHUD : null,
+        vertex3D : null,
+        vertexHUD : null
     },
 }
