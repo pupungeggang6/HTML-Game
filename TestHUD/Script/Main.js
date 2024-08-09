@@ -5,8 +5,6 @@ window.oncontextmenu = rightClick
 function main() {
     canvas = document.getElementById('Screen')
     gl = canvas.getContext('webgl2')
-    canvasSample = document.getElementById('Sample')
-    contextSample = canvasSample.getContext('2d')
 
     window.addEventListener('mouseup', mouseUp, false)
     window.addEventListener('keydown', keyDown, false)
@@ -116,6 +114,8 @@ function loop() {
     if (scene === 'Main') {
         loopMain()
     }
+
+    document.getElementById('Debug').innerHTML = Date.now() - gameFrameCurrent
 
     gameInstance = requestAnimationFrame(loop)
 }

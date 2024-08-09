@@ -15,9 +15,6 @@ function drawScreen() {
     gl.vertexAttribPointer(glVar.location.vertex3D, 3, gl.FLOAT, false, 0, 0)
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, aaa, 0, 1, 0, 0, 1, 1, 0]), gl.STATIC_DRAW)
     gl.drawArrays(gl.TRIANGLES, 0, 3)
-
-    contextSample.clearRect(0, 0, 200, 200)
-    contextSample.drawImage(img.test, 0, 0)
 }
 
 function updateTexture() {
